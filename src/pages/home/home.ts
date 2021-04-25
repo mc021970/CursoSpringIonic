@@ -16,13 +16,13 @@ export class HomePage {
   ionViewWillEnter() {
     this.menu.swipeEnable(false);
     this.menu.enable(false);
-    console.log('Home.ionViewWillEnter: ' + this.menu.swipeEnable);
+    console.log('Home.ionViewWillEnter');
   }
 
   ionViewDidLeave() {
     this.menu.swipeEnable(true);
     this.menu.enable(true);
-    console.log('Home.ionViewDidLeave: ' + this.menu.swipeEnable);
+    console.log('Home.ionViewDidLeave');
   }
 
   login() {

@@ -9,4 +9,12 @@
 
 <ion-content padding>
 <p>Categorias de Produtos</p>
+<ion-list>
+  <button ion-item *ngFor="let item of items">
+    <ion-thumbnail item-start>
+      <img src="{{imageUrl}}/cat/{{item.id}}.svg">
+    </ion-thumbnail>
+    <h2>{{item.nome}}</h2>
+  </button>
+</ion-list>
 </ion-content>
