@@ -9,7 +9,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.log("Passou no interceptor");
         return next.handle(req)
         .catch((error, caught) => {
-
+            console.log(error);
             let errorObj = error;
             if (errorObj.error) {
                 errorObj = errorObj.error;
