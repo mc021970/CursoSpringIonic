@@ -41,8 +41,14 @@ export class ProfilePage {
         },
       error => {
         console.log(error);
+        if (error.status == 403) {
+          this.navCtrl.setRoot('HomePage');
+        }
       }
       );
+    }
+    else {
+      this.navCtrl.setRoot('HomePage');
     }
   }
 
@@ -53,9 +59,7 @@ export class ProfilePage {
         this.foto = this.sanitizer.bypassSecurityTrustUrl(objectURL);
 
       },
-      error => {
-        console.log("Não obteve imagem de perfil");
-      }
+      error => {}
       );
   }
 
