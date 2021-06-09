@@ -61,4 +61,9 @@ export class HomePage {
     
   }
 
+  signup() {
+    console.log('Vai chamar SignupPage');
+    this.navCtrl.push('SignupPage');
+  }
+
 }

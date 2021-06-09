@@ -1,6 +1,6 @@
 import { StorageService } from './../services/storage.service';
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS, HttpHeaders } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS, HttpHeaders, HttpHandler } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx'; // IMPORTANTE: IMPORT ATUALIZADO
 
 @Injectable()
