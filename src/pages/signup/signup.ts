@@ -1,3 +1,6 @@
+import { CidadeDTO } from './../../models/cidade.dto';
+import { EstadoDTO } from './../../models/estado.dto';
+import { LocalidadeService } from './../../services/domain/localidade.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -11,10 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class SignupPage {
 
   fg : FormGroup;
+  estados : EstadoDTO[];
+  cidades : CidadeDTO[];
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public fb: FormBuilder) {
+    public fb: FormBuilder,
+    public localserv: LocalidadeService) {
       this.fg = this.fb.group({
         nome: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
         email: ['joaquim@gmail.com', [Validators.required, Validators.email]],
@@ -36,6 +42,21 @@ export class SignupPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
+    this.localserv.findEstados().subscribe(response => {
+      this.estados = response;
+      this.fg.controls.estadoId.setValue(this.estados[0].id);
+      this.updateCidades();
+    },
+    error => {})
+  }
+
+  updateCidades() {
+    let id_estado = this.fg.value.estadoId;
+    this.localserv.findCidades(id_estado).subscribe(response => {
+      this.cidades = response;
+      this.fg.controls.cidadeId.setValue(null);
+    },
+    error => {})
   }
 
   signupUser() {
