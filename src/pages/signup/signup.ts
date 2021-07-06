@@ -1,9 +1,10 @@
+import { ClienteService } from './../../services/domain/cliente.service';
 import { CidadeDTO } from './../../models/cidade.dto';
 import { EstadoDTO } from './../../models/estado.dto';
 import { LocalidadeService } from './../../services/domain/localidade.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 @IonicPage()
@@ -20,7 +21,9 @@ export class SignupPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public fb: FormBuilder,
-    public localserv: LocalidadeService) {
+    public localserv: LocalidadeService,
+    public cliserv: ClienteService,
+    public alertC: AlertController) {
       this.fg = this.fb.group({
         nome: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
         email: ['joaquim@gmail.com', [Validators.required, Validators.email]],
@@ -60,7 +63,34 @@ export class SignupPage {
   }
 
   signupUser() {
-    console.log("Enviou form");
+    console.log(this.fg.value);
+    this.cliserv.insert(this.fg.value).subscribe(response => {
+      this.showInsertOk();
+    },
+    error => {});
+  }
+
+  showInsertOk() {
+    let alert = this.alertC.create({
+      title: 'Sucesso',
+      message: 'Cadastro efetuado com sucesso!',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            if (this.navCtrl.canGoBack()) {
+              this.navCtrl.pop();
+            }
+            else {
+              this.navCtrl.setRoot('HomePage');
+            }
+          }
+        }
+      ]
+    });
+    
+    alert.present();
   }
 
 }

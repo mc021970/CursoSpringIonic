@@ -1,7 +1,7 @@
 import { StorageService } from './../storage.service';
 import { ClienteDTO } from './../../models/cliente.dto';
 import { API_CONFIG } from './../../config/api.config';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Rx';
 
@@ -21,5 +21,12 @@ export class ClienteService {
             {responseType: 'blob'});
         console.log('Imagem: ' + imagem);
         return imagem;
+    }
+
+    insert(cli: ClienteDTO) {
+        return this.http.post(`${API_CONFIG.baseUrl}/clientes`, cli, {
+            observe: 'response',
+            responseType: 'text'
+        });
     }
 }
