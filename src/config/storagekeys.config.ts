@@ -1,3 +1,4 @@
 export const STORAGE_KEYS = {
-    localuser: "localuser"
+    localuser: "localuser",
+    cart: "curso-spring-ionic-cart"
 }

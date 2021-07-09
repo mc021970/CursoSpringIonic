@@ -1,7 +1,8 @@
+import { CartService } from './../../services/domain/cart.service';
 import { CategoriaService } from './../../services/domain/categoria.service';
 import { ProdutoDTO } from './../../models/produto.dto';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 
 
@@ -16,7 +17,9 @@ export class ProdutoDetailPage {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public catserv: CategoriaService) {
+    public catserv: CategoriaService,
+    public cartserv: CartService, 
+    public alert: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -32,4 +35,19 @@ export class ProdutoDetailPage {
     );
   }
 
+  addToCart(produto : ProdutoDTO) {
+    this.cartserv.addItemtoCart(produto);
+
+    let a = this.alert.create({
+      title: 'Carrinho de Compras',
+      message: produto.nome + ' inserido no carrinho',
+      enableBackdropDismiss: false,
+      buttons: [
+          {
+              text: 'Ok'
+          }
+      ]
+    });
+    a.present();
+  }
 }
