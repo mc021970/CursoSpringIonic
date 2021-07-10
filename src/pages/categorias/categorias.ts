@@ -43,4 +43,8 @@ export class CategoriasPage {
     });
   }
 
+
+  showCart() {
+    this.navCtrl.setRoot("CartPage");
+  }
 }
