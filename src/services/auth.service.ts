@@ -1,3 +1,4 @@
+import { CartService } from './domain/cart.service';
 import { StorageService } from './storage.service';
 import { LocalUser } from './../models/localuser';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +12,9 @@ export class AuthService {
 
     jh : JwtHelper = new JwtHelper();
 
-    constructor(public http: HttpClient, public storage: StorageService) {
+    constructor(public http: HttpClient, 
+        public storage: StorageService,
+        public cartserv: CartService) {
 
     }
 
@@ -42,6 +45,7 @@ export class AuthService {
             email : this.jh.decodeToken(authToken).sub
         };
         this.storage.setLocalUser(u);
+        this.cartserv.eraseCart();
     }
 
     logout() {
