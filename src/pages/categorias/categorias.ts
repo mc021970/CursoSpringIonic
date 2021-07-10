@@ -42,9 +42,4 @@ export class CategoriasPage {
       categoria_id: categoria_id
     });
   }
-
-
-  showCart() {
-    this.navCtrl.setRoot("CartPage");
-  }
 }

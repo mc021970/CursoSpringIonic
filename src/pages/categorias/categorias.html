@@ -4,15 +4,15 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Categorias</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="showCart()">
-        <ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-fab top right edge>
+    <button navPush="CartPage" ion-fab mini>
+      <ion-icon name="cart"></ion-icon>
+    </button>
+  </ion-fab>
 <p>Categorias de Produtos</p>
 <ion-list>
   <button ion-item *ngFor="let item of items" (click)="showProdutos(item.id)">

@@ -54,8 +54,4 @@ export class ProdutosPage {
     });
   }
 
-  showCart() {
-    this.navCtrl.setRoot("CartPage");
-  }
-
 }

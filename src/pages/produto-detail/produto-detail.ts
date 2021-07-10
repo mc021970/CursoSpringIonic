@@ -50,8 +50,4 @@ export class ProdutoDetailPage {
     });
     a.present();
   }
-
-  showCart() {
-    this.navCtrl.setRoot("CartPage");
-  }
 }
