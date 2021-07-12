@@ -1,5 +1,4 @@
 import { CartService } from './../../services/domain/cart.service';
-import { LocalUser } from './../../models/localuser';
 import { ClienteService } from './../../services/domain/cliente.service';
 import { EnderecoDTO } from './../../models/endereco.dto';
 import { Component } from '@angular/core';
@@ -63,5 +62,6 @@ export class PickAddressPage {
   nextPage(endereco: EnderecoDTO) {
     this.pedido.enderecoDeEntrega = {id: endereco.id};
     console.log(this.pedido);
+    this.navCtrl.push("PaymentPage", {pedido: this.pedido});
   }
 }

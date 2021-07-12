@@ -12,6 +12,10 @@ export class ClienteService {
 
     }
 
+    findById(id: string) {
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/${id}`);
+    }
+
     findByEmail(email: string) {
         return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?email=${email}`);
     }
@@ -25,6 +29,13 @@ export class ClienteService {
 
     insert(cli: ClienteDTO) {
         return this.http.post(`${API_CONFIG.baseUrl}/clientes`, cli, {
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
+
+    insertOrder(pedido: any) {
+        return this.http.post(`${API_CONFIG.baseUrl}/pedidos`, pedido, {
             observe: 'response',
             responseType: 'text'
         });
