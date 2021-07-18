@@ -23,7 +23,7 @@ export class PaymentPage {
       console.log(this.pedido);
       this.fg = this.fb.group({
         numeroDeParcelas: [1, Validators.required],
-        "@type": ["pagamentoComCartao", Validators.required]
+        "@type": ["PagamentoCartao", Validators.required]
       });
   }
 

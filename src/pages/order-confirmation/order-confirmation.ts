@@ -74,6 +74,8 @@ export class OrderConfirmationPage {
   }
 
   checkout() {
+    console.log("Vai criar pedido: ");
+    console.log(this.pedido);
     this.cliserv.insertOrder(this.pedido).subscribe(
       response => {
         console.log(response.headers.get("location"));
