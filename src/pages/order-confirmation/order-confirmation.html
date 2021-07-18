@@ -63,7 +63,7 @@
     
       <ion-item *ngIf="pedido.pagamento['@type']=='PagamentoCartao'">
         <h3>Pagamento com cartão</h3>
-        <p>Parcelas: {{pedido.pagamento.numeroDeParcelas}}</p>
+        <p>Parcelas: {{pedido.pagamento.numeroParcelas}}</p>
       </ion-item>
       <ion-item *ngIf="pedido.pagamento['@type']=='PagamentoBoleto'">
         <h3>Pagamento com boleto</h3>
