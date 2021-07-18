@@ -19,8 +19,8 @@ export class CategoriaService {
         return this.http.get<CategoriaDTO[]>(`${API_CONFIG.baseUrl}/categorias`);
     }
 
-    findProdutosByCategoria(id: string) : Observable<ProdutoDTO[]> {
-        return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseUrl}/produtos?categorias=${id}`);
+    findProdutosByCategoria(id: string, page: number=0, linesPerPage: number=5)  : Observable<ProdutoDTO[]> {
+        return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseUrl}/produtos?categorias=${id}&page=${page}&linesPerPage=${linesPerPage}`);
     }
 
     getProduto(id: string) {
