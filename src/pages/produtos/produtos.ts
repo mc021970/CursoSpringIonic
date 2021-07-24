@@ -89,7 +89,7 @@ export class ProdutosPage {
     }, 1000);
   }
 
-  doInfinity(infinity) {
+  doInfinite(infinity) {
     console.log('Carregando página de produtos',infinity);
 
     setTimeout(() => {

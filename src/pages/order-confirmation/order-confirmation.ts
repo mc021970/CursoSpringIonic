@@ -1,6 +1,5 @@
 import { ClienteService } from './../../services/domain/cliente.service';
 import { EnderecoDTO } from './../../models/endereco.dto';
-import { ClienteDTO } from './../../models/cliente.dto';
 import { CartService } from './../../services/domain/cart.service';
 import { CartItem } from './../../models/cart-item';
 import { Component } from '@angular/core';
